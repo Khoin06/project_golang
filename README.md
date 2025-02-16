@@ -1,2 +1,3 @@
 # project_golang
-![lap1_1.jpg]
+![Bài 1](https://raw.githubusercontent.com/Khoin06/project_golang/main/bai1.png)
+
