@@ -20,22 +20,22 @@
 
 - Khi ấn đổi sang voice en-US-AndrewMultilingualNeural
 
-![Bài 2](https://github.com/Khoin06/project_golang/blob/main/lap2.3jpg)
+![Bài 2](https://github.com/Khoin06/project_golang/blob/main/lap2.3.jpg)
 
 # Câu 3: Tạo hội thoại từ prompt và trích xuất từ mới trong hội thoại
 - Sau khi chạy chương trình
   
-![Bài 3](https://github.com/Khoin06/project_golang/blob/main/2.1.jpg)
+![Bài 3](https://github.com/Khoin06/project_golang/blob/main/3.1.jpg)
 
 
 - Ấn gửi và hiện hội thoại gốc:
   
-![Bài 3](https://github.com/Khoin06/project_golang/blob/main/2.2.jpg)
+![Bài 3](https://github.com/Khoin06/project_golang/blob/main/3.2.jpg)
 
 Danh sách từ quan trọng:
 
-![Bài 3](https://github.com/Khoin06/project_golang/blob/main/2.3.jpg)
+![Bài 3](https://github.com/Khoin06/project_golang/blob/main/3.3.jpg)
 
 Kết quả dịch:
 
-![Bài 3](https://github.com/Khoin06/project_golang/blob/main/2.4.jpg)
+![Bài 3](https://github.com/Khoin06/project_golang/blob/main/3.4.jpg)
