@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+
+
+            "name": "Launch",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "D:/project_golang/lap_5/main.go",
+            "args": [],
+            "env": { "GROQ_API_KEY": "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"},
+            "buildFlags": "",
+            "cwd": "D:/project_golang/lap_5"
+        }
+    ]
+}

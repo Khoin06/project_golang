@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat với AI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        #prompt {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        #response {
+            margin-top: 20px;
+            text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background: #f9f9f9;
+        }
+        #words {
+            margin-top: 20px;
+            text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chat với AI</h1>
+    <button onclick="sendPrompt()">Gửi</button>
+    
+    <h2>Hội thoại gốc:</h2>
+    <p id="originalText"></p>
+
+    <h2>Danh sách từ quan trọng:</h2>
+    <ul id="words"></ul>
+
+    <h2>Kết quả dịch:</h2>
+    <pre id="jsonResult"></pre>
+
+    <script>
+        async function sendPrompt() {
+
+
+
+            document.getElementById("originalText").innerText = "Đang xử lý...";
+            document.getElementById("words").innerHTML = "";
+            document.getElementById("jsonResult").innerText = "";
+
+            try {
+                const res = await fetch("/generate", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ content: prompt })
+                });
+
+                if (!res.ok) throw new Error(`Server Error: ${res.status}`);
+                const data = await res.json();
+
+                // Hiển thị hội thoại gốc
+                document.getElementById("originalText").innerText = data.original_text;
+
+                // Hiển thị danh sách từ quan trọng
+                const wordsList = document.getElementById("words");
+                wordsList.innerHTML = "";
+                data.words.forEach(word => {
+                    const li = document.createElement("li");
+                    li.textContent = `${word.vietnamese} - ${word.english}`;
+                    wordsList.appendChild(li);
+                });
+
+                // Hiển thị kết quả JSON
+                document.getElementById("jsonResult").innerText = JSON.stringify(data.words, null, 2);
+            } catch (error) {
+                console.error("Lỗi fetch:", error);
+                document.getElementById("originalText").innerText = "Lỗi kết nối!";
+            }
+        }
+    </script>
+</body>
+
+</html>

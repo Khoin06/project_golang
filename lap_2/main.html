@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSML Generator</title>
+    <style>
+        textarea { width: 100%; height: 150px; }
+        pre { background: #f4f4f4; padding: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <select id="voiceA">
+        <option value="en-US-AndrewMultilingualNeural">Voice A</option>
+        <option value="en-US-ChristopherNeural">Christopher</option>
+        <option value="en-US-EricNeural">Eric</option>
+    </select>
+    <select id="voiceB">
+        <option value="vi-VN-HoaiMyNeural">Voice B</option>
+        <option value="vi-VN-NamMinhNeural">Nam Minh</option>
+    </select>
+    <button onclick="generateSSML()">Xuất SSML</button>
+    <textarea id="dialogue" placeholder="Nhập hội thoại...">A: Chào Lan! Mình là James, đến từ Hoa Kỳ. Rất vui được gặp bạn.
+B: Chào James! Mình là Lan, đến từ Việt Nam. Rất vui được làm quen với bạn.
+A: Bạn làm nghề gì vậy, Lan?
+B: Mình là cô giáo dạy ngoại ngữ. Còn bạn?
+A: Mình là kỹ sư hàng không.
+B: Nghe thú vị quá! Bạn đến Việt Nam lâu chưa?
+A: Mình mới đến đây được vài ngày.
+B: Hy vọng bạn sẽ thích Việt Nam!
+A: Cảm ơn Lan!</textarea>
+    <pre id="ssmlOutput"></pre>
+    <script>
+        function generateSSML() {
+            const voiceA = document.getElementById('voiceA').value;
+            const voiceB = document.getElementById('voiceB').value;
+            const dialogue = document.getElementById('dialogue').value.split('\n');
+            let ssml = `<speak xml:lang="vi-VN">\n`;
+            
+            dialogue.forEach(line => {
+                let voice = line.startsWith('A:') ? voiceA : voiceB;
+                ssml += `    <voice name="${voice}">${line.substring(3)}</voice>\n`;
+            });
+            
+            ssml += `</speak>`;
+            document.getElementById('ssmlOutput').innerText = ssml;
+        }
+    </script>
+</body>
+</html>
